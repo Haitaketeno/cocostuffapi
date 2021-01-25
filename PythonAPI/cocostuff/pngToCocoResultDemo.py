@@ -49,13 +49,13 @@ def pngToCocoResultDemo(dataDir='../..', resType='examples', indent=None):
     annCount = 0
 
     with io.open(jsonPath, 'w', encoding='utf8') as output:
-        print('Writing results to: %s' % jsonPath)
+        print(('Writing results to: %s' % jsonPath))
 
         # Annotation start
-        output.write(unicode('[\n'))
+        output.write(str('[\n'))
 
-        for i, imgName in zip(xrange(0, imgCount), imgNames):
-            print('Converting png image %d of %d: %s' % (i+1, imgCount, imgName))
+        for i, imgName in zip(range(0, imgCount), imgNames):
+            print(('Converting png image %d of %d: %s' % (i+1, imgCount, imgName)))
 
             # Add stuff annotations
             pngPath = '%s/%s.png' % (pngFolder, imgName)
@@ -75,18 +75,18 @@ def pngToCocoResultDemo(dataDir='../..', resType='examples', indent=None):
             str_ = json.dumps(anns, indent=indent)
             str_ = str_[1:-1]
             if len(str_) > 0:
-                output.write(unicode(str_))
+                output.write(str(str_))
                 annCount = annCount + 1
 
             # Add comma separator
             if i < imgCount-1 and len(str_) > 0:
-                output.write(unicode(','))
+                output.write(str(','))
 
             # Add line break
-            output.write(unicode('\n'))
+            output.write(str('\n'))
 
         # Annotation end
-        output.write(unicode(']'))
+        output.write(str(']'))
 
         # Create an error if there are no annotations
         if annCount == 0:
