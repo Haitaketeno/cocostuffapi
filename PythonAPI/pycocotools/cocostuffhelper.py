@@ -70,7 +70,7 @@ def segmentationToCocoResult(labelMap, imgId, stuffStartId=92):
         anns.append(anndata)
     return anns
 
-def cocoSegmentationToSegmentationMap(coco, imgId, checkUniquePixelLabel=True, includeCrowd=False):
+def cocoSegmentationToSegmentationMap(coco, imgId, checkUniquePixelLabel=False, includeCrowd=False):
     '''
     Convert COCO GT or results for a single image to a segmentation map.
     :param coco: an instance of the COCO API (ground-truth or result)
